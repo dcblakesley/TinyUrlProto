@@ -1,6 +1,12 @@
-﻿namespace TinyUrlProto;
+﻿using TinyUrlProto.Models;
+
+namespace TinyUrlProto;
 
 
+/// <summary>
+/// A poor simulation of Sql for EF usage. <br/>
+/// Doesn't allow Indexes or .Select to only return desired columns 
+/// </summary>
 public class Database
 {
     /// <remarks> Note: Should have an index for UserIds </remarks>

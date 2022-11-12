@@ -1,43 +1,19 @@
-﻿In this round we will be asking you to write a small application to serve as a proof of concept 
-for a TinyURL style service. Please code in C#, Java, or any of their derivatives (scala, etc.)
-
-** We do NOT expect to see an actual web service, and we do not need the application to parse 
-actual HTTP requests. Please do NOT write a web service. And we do not need to see an actual 
-persistent storage layer.***
-
-TinyURL is a service in which users can create short links, such as  https://tinyurl.com/3rp36a3s, 
-that redirect to longer links, such as                               https://www.adroit-tt.com ... lol
-
-For this POC, we only need to see it mocked out at the command line level. 
-We expect that the application can be run with user input, or with programmed unit tests 
-to demonstrate functionality. Again, we do NOT expect to see an actual web service, and 
-we do not need the application to parse actual HTTP requests. Similarly, we do not need 
-to see an actual persistent storage layer. Feel free to mock this out in memory however 
-you best see fit. Lastly, note that a single long URL might map to a few different short URLs.
-
-Although this is a POC, we would still like to see it designed with architecture in mind. 
-To this end, please consider your schema, service methods, and constraints accordingly.
+﻿ - Demo with UnitTests
+   * Tests.DemoTest.Demo();
 
 The POC should support:
 
  - Creating and Deleting short URLs with associated long URLs.
+   * TinyUrlService.CreateTinyUrl
+   * TinyUrlService.DeleteTinyUrl
+
  - Getting the long URL from a short URL.
+    * TinyUrlService.GetLongUrl
+
  - Getting statistics on the number of times a short URL has been "clicked" i.e. the number of times its long URL has been retrieved.
+   * TinyUrlService.GetTinyUrlUsageCount
+
  - Entering a custom short URL or letting the app randomly generate one, while maintaining uniqueness of short URLs.
-
-Once you've completed the assessment, please zip up your project and resubmit back to this email chain. 
-If .zip doesn't get through, feel free to send us a link via Google Drive or Dropbox. 
-You have 48 hours to submit your solution.
-
- - Command Line only, no web service
- - No persistent Storage Layer
- - Demo with UnitTests
- - 
- - 
- - 
- - 
- -
-
 
 
 // Rules
@@ -58,3 +34,5 @@ You have 48 hours to submit your solution.
 
 //  - For a given user, new codes won't be generated for the same long url
 //      - If a second user enters the same url, they will generate their own code that is different than the other Users' code
+
+// Usage counts are only available to Customers, not anonymous users

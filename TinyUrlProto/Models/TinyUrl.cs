@@ -1,13 +1,20 @@
-﻿namespace TinyUrlProto;
+﻿namespace TinyUrlProto.Models;
 
 public class TinyUrl
 {
     public TinyUrl() { }
     public TinyUrl(string longUrl, string domain, Guid? userId = null)
     {
-        LongUrl=longUrl;
-        Domain=domain;
-        UserId=userId;
+        LongUrl = longUrl;
+        Domain = domain;
+        UserId = userId;
+    }
+    public TinyUrl(string id, string longUrl, string domain, Guid? userId = null)
+    {
+        LongUrl = longUrl;
+        Domain = domain;
+        UserId = userId;
+        Id = id.ToLower();
     }
 
 
@@ -40,11 +47,12 @@ public class TinyUrl
         //  Rules: LongUrl and Domain must be valid
         if (!string.IsNullOrWhiteSpace(LongUrl)
             && !string.IsNullOrWhiteSpace(Domain)
-            && Uri.IsWellFormedUriString(LongUrl, UriKind.RelativeOrAbsolute) 
-            && Uri.IsWellFormedUriString($"{Domain}.com", UriKind.RelativeOrAbsolute)) {
+            && Uri.IsWellFormedUriString(LongUrl, UriKind.RelativeOrAbsolute)
+            && Uri.IsWellFormedUriString($"{Domain}.com", UriKind.RelativeOrAbsolute))
+        {
             return null;
         }
-        
+
         // Explain why validation failed
         var results = new List<string>();
         if (string.IsNullOrWhiteSpace(LongUrl))
@@ -55,8 +63,8 @@ public class TinyUrl
             results.Add($"Invalid LongUrl: {LongUrl}");
         if (!Uri.IsWellFormedUriString($"{Domain}.com", UriKind.RelativeOrAbsolute))
             results.Add($"Invalid Domain: {Domain}");
-        
+
         return results;
     }
-    public override string ToString() => $"{Id} {(UserId == null ? "" : $" - {UserId}")} - {LongUrl}";
+    public override string ToString() => $"{Domain}.com/{Id} {(UserId == null ? "" : $" - {UserId}")} - {LongUrl}";
 }
