@@ -47,7 +47,7 @@ You have 48 hours to submit your solution.
 //      -> 2.82 trillion possibilities
 //      -> Collisions are likely to happen
 
-// Does not check for a truly valid input url - but we will
+// Does some checking for a valid URL
 //      - about.above.across.after.against.along => tinyurl.com/22m47eyb
 //      - somelongurl.privacy.blah/asdkjfsa hghsa/sakf jsaijdfijasewijr iaewjrf/asidjfihihgkjh => tinyurl.com/3fuxwrd9
 //      - hello.hello => tinyurl.com/4r2s8crb
