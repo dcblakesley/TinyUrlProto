@@ -47,6 +47,7 @@ public class TinyUrl
         //  Rules: LongUrl and Domain must be valid
         if (!string.IsNullOrWhiteSpace(LongUrl)
             && !string.IsNullOrWhiteSpace(Domain)
+            && (string.IsNullOrEmpty(Id) || Id.Length == 8) // Id must be null, empty or 8 characters
             && Uri.IsWellFormedUriString(LongUrl, UriKind.RelativeOrAbsolute)
             && Uri.IsWellFormedUriString($"{Domain}.com", UriKind.RelativeOrAbsolute))
         {
@@ -55,6 +56,8 @@ public class TinyUrl
 
         // Explain why validation failed
         var results = new List<string>();
+        if (string.IsNullOrEmpty(Id) || Id.Length == 8)
+            results.Add($"Id must be null, empty or 8 characters: {Id}");
         if (string.IsNullOrWhiteSpace(LongUrl))
             results.Add("Missing LongUrl");
         if (string.IsNullOrWhiteSpace(Domain))
